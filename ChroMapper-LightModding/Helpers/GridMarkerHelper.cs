@@ -196,8 +196,8 @@ namespace ChroMapper_LightModding.Helpers
 
         private void UpdateBpmChanges()
         {
-            bpmChanges = plugin.BPMChangeGridContainer.LoadedObjects.Cast<BaseBpmEvent>().ToList();
-            if (bpmChanges.Count == 0) // apparently on intial load we are getting no bpm changes, so doing this for now to try and get them from the saved file anyway
+            bpmChanges = plugin.BPMChangeGridContainer.MapObjects.ToList();
+            if (bpmChanges.Count == 0) // apparently on initial load we are getting no bpm changes, so doing this for now to try and get them from the saved file anyway
             {
                 BeatSaberSong.DifficultyBeatmap diff = plugin.BeatSaberSongContainer.Song.DifficultyBeatmapSets.Where(x => x.BeatmapCharacteristicName == plugin.currentReview.DifficultyCharacteristic).FirstOrDefault().DifficultyBeatmaps.Where(y => y.Difficulty == plugin.currentReview.Difficulty && y.DifficultyRank == plugin.currentReview.DifficultyRank).FirstOrDefault();
                 BaseDifficulty baseDifficulty = plugin.BeatSaberSongContainer.Song.GetMapFromDifficultyBeatmap(diff);

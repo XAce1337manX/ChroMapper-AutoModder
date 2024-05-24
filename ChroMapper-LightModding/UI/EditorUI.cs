@@ -528,8 +528,8 @@ namespace ChroMapper_LightModding.UI
             //image.type = Image.Type.Sliced;
             //image.color = new Color(0.35f, 0.35f, 0.35f);
 
-            var bpmChanges = plugin.BPMChangeGridContainer.LoadedObjects.Cast<BaseBpmEvent>().ToList();
-            if (bpmChanges.Count == 0) // apparently on intial load we are getting no bpm changes, so doing this for now to try and get them from the saved file anyway
+            var bpmChanges = plugin.BPMChangeGridContainer.MapObjects.ToList();
+            if (bpmChanges.Count == 0) // apparently on initial load we are getting no bpm changes, so doing this for now to try and get them from the saved file anyway
             {
                 BeatSaberSong.DifficultyBeatmap diff = plugin.BeatSaberSongContainer.Song.DifficultyBeatmapSets.Where(x => x.BeatmapCharacteristicName == plugin.currentReview.DifficultyCharacteristic).FirstOrDefault().DifficultyBeatmaps.Where(y => y.Difficulty == plugin.currentReview.Difficulty && y.DifficultyRank == plugin.currentReview.DifficultyRank).FirstOrDefault();
                 BaseDifficulty baseDifficulty = plugin.BeatSaberSongContainer.Song.GetMapFromDifficultyBeatmap(diff);
